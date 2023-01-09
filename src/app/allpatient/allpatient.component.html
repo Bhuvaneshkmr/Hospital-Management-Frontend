@@ -1,0 +1,47 @@
+<html>
+  <body>
+    <div class="row">
+      <h2>PATIENT LIST</h2>
+    </div>
+
+    <div *ngIf="patients==null">
+      <h1>NO PATIENT FOUND</h1>
+  </div>
+  <div *ngIf="patients!=null">
+
+  
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>PatientId</th>
+          <th>PatientName</th>
+          <th>PatientPhoneNo</th>
+          <th>PatientAddress</th>
+          <th>PatientAge</th>
+          <th>PatientGender</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let patient of patients">
+        <td>{{ patient.patientId }}</td>
+          <td>{{ patient.patientName }}</td>
+          <td>{{ patient.patientPhoneNo }}</td>
+          <td>{{ patient.patientAddress }}</td>
+          <td>{{ patient.patientAge }}</td>
+          <td>{{ patient.patientGender }}</td>
+          <td>
+            <!-- (click) = "updateBook(book.bookId)" -->
+                        <button  class = "btn btn-primary"> Update</button> 
+                         <!-- (click) = "deleteBook(book.bookId)"  -->
+                        <button  class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                         <!-- (click) = "bookDetail(book.bookId)"  -->
+                        <button  class = "btn btn-primary" style="margin-left: 10px" routerLink="/bookappointmentcomponent" > Book Appointment</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  </body>
+</html>

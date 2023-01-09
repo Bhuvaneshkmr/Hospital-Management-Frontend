@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet"> -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  </head>
+  <body>
+
+    <!-- <select >
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="opel">Opel</option>
+      <option value="audi">Audi</option>
+    </select> -->
+
+  
+     
+
+
+    <div class="topnav">
+      
+        <a class="active" routerLink="/AdminloginComponent" routerLinkActive="active">Admin</a>
+        <a class="active" routerLink="/LoginComponent" routerLinkActive="active">Receptionist</a> 
+        <a
+      class="active"
+      routerLink="/Doctorlogin"
+      routerLinkActive="active"
+      >Doctor</a
+    > 
+    </div>
+    <!--  Request me for a signup form or any type of help  -->
+    <!-- /examples/actions/confirmation.php -->
+    <div class="topnavlog">
+
+      <!-- <div>
+        <mat-form-field class="full-width" >
+        <mat-select class="color" formControlName="cardType" aria-placeholder="select" placeholder="CardType" required>
+       
+            <mat-option value="NPHH" >NPHH</mat-option>
+            <mat-option value="PHH">PHH</mat-option>
+           
+        </mat-select>
+    </mat-form-field>
+      </div> -->
+      
+    </div>
+    <div class="login-form">
+      <!-- action="receptionistdashboard.html" method="post" -->
+      <!-- (ngSubmit)="onSubmit()" -->
+      <form [formGroup]="signUpAdmin"  (submit)="onSubmit()" autocomplete="off" >
+        <!-- <div class="avatar"><i class="material-icons">&#xE7FF;</i></div> -->
+        <h4 class="modal-title">Signup to Your Admin Account</h4>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            required="required"
+            formControlName="userName"
+            (keypress)="OnlyNumbersAllowed($event)"
+          />
+        </div>
+        <div  *ngIf="signUpAdmin.controls['userName'].invalid && (signUpAdmin.controls['userName'].dirty || signUpAdmin.controls['userName'].touched)" class="alert">
+          <div *ngIf="signUpAdmin.controls['userName'].errors" style="color: red;">
+          *Please Enter Your User Name
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <input
+          type="tel"
+          pattern="^[6-9]{1}[0-9]{9}"
+          class="form-control"
+          placeholder="Phone Number"
+          required="required"
+          formControlName="adminPhoneNo"
+        />
+      </div>
+      <div  *ngIf="signUpAdmin.controls['adminPhoneNo'].invalid && (signUpAdmin.controls['adminPhoneNo'].dirty || signUpAdmin.controls['adminPhoneNo'].touched)" class="alert">
+        <div *ngIf="signUpAdmin.controls['adminPhoneNo'].errors" style="color: red;">
+        *Please Enter Your 10 Digit Phone Number
+      </div>
+    </div>
+    
+
+        <div class="form-group">
+          <input
+            type="password"
+            
+            class="form-control"
+            placeholder="Password"
+            required="required"
+            formControlName="password"
+          />
+        </div>
+        <div  *ngIf="signUpAdmin.controls['password'].invalid && (signUpAdmin.controls['password'].dirty || signUpAdmin.controls['password'].touched)" class="alert">
+          <div *ngIf="signUpAdmin.controls['password'].errors" style="color: red;">
+          *Please Enter Your Password
+        </div>
+      </div>
+
+      <!-- [type]="show ? 'text' : 'password'"  -->
+      <!-- <input type="checkbox" (click)="password()"> {{ show ? 'Hide' : 'Show'}} Password -->
+
+      <!-- <div *ngIf="errorMessage!=null">
+        <p style="color: red;">{{errorMessage}}</p>
+      </div> -->
+      
+      
+        
+        
+        <!-- class="form-control" -->
+        <div class="form-group small clearfix">
+          <!-- <label class="checkbox-inline"><input type="checkbox"> Remember me</label> -->
+          <!-- <a href="#" class="forgot-link">Forgot Password?</a>  -->
+        </div>
+        <!-- <a routerLink="/receptionistdashboard" routerLinkActive="active"> -->
+          <input
+            type="submit"
+            class="btn btn-primary btn-block btn-lg"
+            value="Submit"
+            required="required"
+           [disabled]="signUpAdmin.invalid"
+            
+          />
+
+         
+       
+        
+      </form>
+      
+      	
+      <!-- routerLink="/AdmindashboardComponent" -->
+
+      <!-- <div class="text-center small">Create an Account! <a href="#">Sign up</a></div> -->
+      
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+  </body>
+</html>
+

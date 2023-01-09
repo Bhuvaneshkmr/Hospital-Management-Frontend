@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet"> -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  </head>
+  <body>
+    <div class="topnav">
+
+
+      
+      <!-- aria-haspopup="true" -->
+      <!-- data-bs-toggle="dropdown" -->
+      <!-- aria-expanded="false" -->
+      <!-- <mat-select class="matselectclass" aria-placeholder="select" placeholder="Login">
+   
+        <mat-option value="option" routerLink="/LoginComponent">User</mat-option>
+        <mat-option value="option" >Admin</mat-option>
+       
+      </mat-select> -->
+    
+      <!-- /btn-group -->
+
+      <!-- Example single danger button -->
+      <!-- <div class="container" style="float: right;">
+      <h2>Dropdowns</h2>
+      <div class="dropdown">
+        <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Click on Me </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Phantom</a></li>
+          <li><a href="#">Cluster</a></li>
+        </ul>
+      </div>
+    </div> -->
+      <!-- <label for="language">Select a Programming Language:</label> -->
+      <!-- <select name="language" id="language">
+        <option routerLink="/AdminloginComponent"  routerLinkActive="active">Admin</option>
+        <option value="Receptionist" routerLink="/LoginComponent" routerLinkActive="active" >Receptionist</option>
+        <option value="Doctor"><a routerLink="/Doctorlogin" routerLinkActive="active">Doctor</a></option> -->
+      <!-- <option value="java" selected>Java</option> -->
+      <!-- </select> -->
+      <!-- <a routerLink="/LoginComponent" routerLinkActive="active">Receptionist</a> -->
+
+      <a
+        class="active"
+        routerLink="/AdminloginComponent"
+        routerLinkActive="active"
+        >Admin</a
+      >
+      <a
+        class="active"
+        routerLink="/LoginComponent"
+        routerLinkActive="active"
+        >Receptionist</a
+      >
+      <a
+      class="active"
+      routerLink="/Doctorlogin"
+      routerLinkActive="active"
+      >Doctor</a
+    >
+    </div>
+    <!--  Request me for a signup form or any type of help  -->
+    <!-- /examples/actions/confirmation.php -->
+    <div class="topnavlog"></div>
+    <div class="login-form">
+      <!-- action="receptionistdashboard.html" method="post" -->
+      <!-- (ngSubmit)="onSubmit()" -->
+      <form [formGroup]="DoctorLoginForm" >
+        <!-- <div class="avatar"><i class="material-icons">&#xE7FF;</i></div> -->
+        <h4 class="modal-title">Login to Your Doctor Account</h4>
+        <div class="form-group">
+          <input
+            type="tel"
+            class="form-control"
+            placeholder="Phone Number"
+            pattern="^[6-9]{1}[0-9]{9}"
+            required="required"
+            formControlName="doctorPhoneNumber"
+          />
+        </div>
+        <div  *ngIf="DoctorLoginForm.controls['doctorPhoneNumber'].invalid && (DoctorLoginForm.controls['doctorPhoneNumber'].dirty || DoctorLoginForm.controls['doctorPhoneNumber'].touched)" class="alert">
+          <div *ngIf="DoctorLoginForm.controls['doctorPhoneNumber'].errors" style="color: red;">
+          *Please Enter Your Phone Number 
+        </div>
+      </div>
+        <div class="form-group">
+          <input
+            type="password"
+            [type]="show ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Password"
+            required="required"
+            formControlName="doctorPassword"
+          />
+        </div>
+        <div  *ngIf="DoctorLoginForm.controls['doctorPassword'].invalid && (DoctorLoginForm.controls['doctorPassword'].dirty || DoctorLoginForm.controls['doctorPassword'].touched)" class="alert">
+          <div *ngIf="DoctorLoginForm.controls['doctorPassword'].errors" style="color: red;">
+          *Please Enter Your Password
+        </div>
+      </div>
+
+      <input type="checkbox" (click)="password()"> {{ show ? 'Hide' : 'Show'}} Password
+
+      <div *ngIf="errorMessage!=null">
+        <p style="color: red;">{{errorMessage}}</p>
+      </div>
+
+        <!-- class="form-control" -->
+        <div class="form-group small clearfix">
+          <!-- <label class="checkbox-inline"><input type="checkbox"> Remember me</label> -->
+          <!-- <a href="#" class="forgot-link">Forgot Password?</a>  -->
+        </div>
+        <!-- <a routerLink="/receptionistdashboard" routerLinkActive="active"> -->
+        <input
+          type="submit"
+          class="btn btn-primary btn-block btn-lg"
+          value="Login"
+          required="required"
+          (click) ="onSubmit()" [disabled]="DoctorLoginForm.invalid"
+        />
+      </form>
+
+      <!-- routerLink="/Doctordashboard" -->
+      <!-- <div class="text-center small">Don't have an account? <a href="#">Sign up</a></div> -->
+
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+  </body>
+</html>

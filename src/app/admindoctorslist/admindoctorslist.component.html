@@ -1,0 +1,73 @@
+<html>
+  <body>
+    <div class="topnav">
+        <a class="active" routerLink="/AdmindashboardComponent">Home</a>
+       
+        <div class="search-container">
+          <form>
+            <!-- <input type="text" placeholder="Search.." name="">
+            <button type="submit" >Submit</button> -->
+            <!-- routerLink="/ReadPatient/{{}}" -->
+            <!-- patientName" [(ngModel)]="" -->
+          </form>
+        </div>
+      </div>
+ 
+          <div class="row">
+            <h2>DOCTORS LIST</h2>
+          </div>
+      
+          <div *ngIf="doctors==null">
+            <h1>NO DOCTORS FOUND</h1>
+        </div>
+        <div *ngIf="doctors!=null">
+      
+        
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Doctor Id </th>
+                <th>Doctor Name</th>
+                <th>Doctor Age </th>
+                <th>Doctor Qualification</th>
+                <th>Speciality </th>
+                <th>Phone Number</th>
+                <th>Year Of Practice </th>
+                <th>Joined Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr  *ngFor="let doctor of doctors" >
+              <td>{{ doctor.doctorId }}</td>
+              <td>{{ doctor.doctorName }}</td>
+              <td>{{ doctor.doctorAge }}</td>
+              <td>{{ doctor.doctorQualification }}</td>
+              <td>{{ doctor.speciality }}</td>
+              <td>{{ doctor.doctorPhoneNumber }}</td>
+              <td>{{ doctor.yearOfPractice }}</td>
+              <td>{{ doctor.joiningDate }}</td>
+              
+                
+                
+                <!-- <td> -->
+                  <!-- (click) = "updateBook(book.bookId)" -->
+                              <!-- <button type="button" class = "btn btn-primary"   >Update</button>  -->
+                               <!-- (click) = "deleteBook(book.bookId)"  -->
+                              <!-- <button  class = "btn btn-danger" style="margin-left: 10px" (click) = "deleteDoctor(doctor.doctorId)"> Delete</button> -->
+                               <!-- (click) = "bookDetail(book.bookId)"  -->
+                              <!-- <button  class = "btn btn-primary" style="margin-left: 10px"   >Generate Bill</button> -->
+                <!-- </td>routerLink="/UpdateAppointmentDateAndTime" (click)="passValue(bookAppointment) -->
+                <!-- routerLink="/billComponent" -->
+                
+              </tr>
+            </tbody>
+      
+          </table>
+        </div>
+       
+      
+      
+  </body>
+</html>
+

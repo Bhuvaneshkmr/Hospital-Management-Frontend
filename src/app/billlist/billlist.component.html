@@ -1,0 +1,74 @@
+
+<html>
+    <body>
+      <div class="topnav">
+        <a class="active" routerLink="/receptionistdashboard">Home</a>
+       
+        <div class="search-container">
+          <form>
+            <!-- <input class="datepicker" type="date" [(ngModel)]="date" /> -->
+            <!-- <input type="date" id="date" style="border-color: aqua;" > -->
+            <!-- <input type="text" placeholder="Search.." [(ngModel)]="searchName" name="search" > -->
+            <!-- <button type="submit" routerLink="/ReadPatient/{{patientName}}" >Submit</button> -->
+            <!-- routerLink="/ReadPatient/{{}}" -->
+            <!-- patientName" [(ngModel)]="" -->
+          </form>
+        </div>
+      </div>
+      
+      <div class="row">
+        <h2>BILL LIST</h2>
+      </div>
+  
+      <div *ngIf="bills==null">
+        <h1>NO BILL FOUND</h1>
+    </div>
+    <div *ngIf="bills!=null">
+  
+      
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <!-- <th>Doctor Name</th> -->
+            <th>Amount</th>
+            <th>Amount Status </th>
+            <th>Bill Date & Time</th>
+            <!-- <th>Reason</th> -->
+            <!-- <th>Appointment Status </th> -->
+            <!-- <th>Appointment Date</th> -->
+            <!-- <th>Appointment Status</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr  *ngFor="let bill of bills" >
+                <td>{{ bill.patientName}}</td>
+                <!-- <td>{{ bill.doctorName}}</td> -->
+                <td>{{ bill.amount }}</td>
+                <td>{{ bill.amountStatus }}</td>
+                <td>{{ bill.billDateAndTime}}</td>
+                <!-- <td>{{ bill}}</td> -->
+                
+                
+            
+            
+            
+            
+            <!-- <td> -->
+              <!-- (click) = "updateBook(book.bookId)" -->
+                          <!-- <button type="button" class = "btn btn-primary"   (click)="seeAppoint(bookAppointment.doctorId)">Update</button>  -->
+                           <!-- (click) = "deleteBook(book.bookId)"  -->
+                          <!-- <button  class = "btn btn-danger" style="margin-left: 10px"> Delete</button> -->
+                           <!-- (click) = "bookDetail(book.bookId)"  -->
+                          <!-- <button  class = "btn btn-primary" style="margin-left: 10px" routerLink="/billComponent" >Generate Bill</button> -->
+            <!-- </td>routerLink="/UpdateAppointmentDateAndTime" (click)="passValue(bookAppointment) -->
+          <!-- </tr> -->
+        </tbody>
+  
+      </table>
+    </div>
+    </body>
+  </html>
+  
+  

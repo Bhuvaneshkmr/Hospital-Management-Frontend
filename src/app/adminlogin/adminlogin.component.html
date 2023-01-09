@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet"> -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  </head>
+  <body>
+
+    <!-- <select >
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="opel">Opel</option>
+      <option value="audi">Audi</option>
+    </select> -->
+
+  
+     
+
+
+    <div class="topnav">
+      
+        <a class="active" routerLink="/AdminloginComponent" routerLinkActive="active">Admin</a>
+        <a class="active" routerLink="/LoginComponent" routerLinkActive="active">Receptionist</a> 
+        <a
+      class="active"
+      routerLink="/Doctorlogin"
+      routerLinkActive="active"
+      >Doctor</a
+    > 
+    </div>
+    <!--  Request me for a signup form or any type of help  -->
+    <!-- /examples/actions/confirmation.php -->
+    <div class="topnavlog">
+
+      <!-- <div>
+        <mat-form-field class="full-width" >
+        <mat-select class="color" formControlName="cardType" aria-placeholder="select" placeholder="CardType" required>
+       
+            <mat-option value="NPHH" >NPHH</mat-option>
+            <mat-option value="PHH">PHH</mat-option>
+           
+        </mat-select>
+    </mat-form-field>
+      </div> -->
+      
+    </div>
+    <div class="login-form">
+      <!-- action="receptionistdashboard.html" method="post" -->
+      <!-- (ngSubmit)="onSubmit()" -->
+      <form [formGroup]="AdminLoginForm" >
+        <!-- <div class="avatar"><i class="material-icons">&#xE7FF;</i></div> -->
+        <h4 class="modal-title">Login to Your Admin Account</h4>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Phone Number"
+            required="required"
+            formControlName="adminPhoneNo"
+          />
+        </div>
+        <div  *ngIf="AdminLoginForm.controls['adminPhoneNo'].invalid && (AdminLoginForm.controls['adminPhoneNo'].dirty || AdminLoginForm.controls['adminPhoneNo'].touched)" class="alert">
+          <div *ngIf="AdminLoginForm.controls['adminPhoneNo'].errors" style="color: red;">
+          *Please Enter Your Phone Number
+        </div>
+      </div>
+        <div class="form-group">
+          <input
+            type="password"
+            [type]="show ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Password"
+            required="required"
+            formControlName="password"
+          />
+        </div>
+        <div  *ngIf="AdminLoginForm.controls['password'].invalid && (AdminLoginForm.controls['password'].dirty || AdminLoginForm.controls['password'].touched)" class="alert">
+          <div *ngIf="AdminLoginForm.controls['password'].errors" style="color: red;">
+          *Please Enter Your Password
+        </div>
+      </div>
+      <input type="checkbox" (click)="password()"> {{ show ? 'Hide' : 'Show'}} Password
+
+      <div *ngIf="errorMessage!=null">
+        <p style="color: red;">{{errorMessage}}</p>
+      </div>
+      
+      
+        
+        
+        <!-- class="form-control" -->
+        <div class="form-group small clearfix">
+          <!-- <label class="checkbox-inline"><input type="checkbox"> Remember me</label> -->
+          <!-- <a href="#" class="forgot-link">Forgot Password?</a>  -->
+        </div>
+        <!-- <a routerLink="/receptionistdashboard" routerLinkActive="active"> -->
+          <input
+            type="submit"
+            class="btn btn-primary btn-block btn-lg"
+            value="Login"
+            required="required"
+            (click) ="onSubmit()" [disabled]="AdminLoginForm.invalid"
+            
+          />
+
+         
+       
+        
+      </form>
+      
+      	
+      <!-- routerLink="/AdmindashboardComponent" -->
+
+      <div class="text-center small">Create an Account! <a routerLink="/Signupadmin">Sign up</a></div>
+      
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+  </body>
+</html>
+

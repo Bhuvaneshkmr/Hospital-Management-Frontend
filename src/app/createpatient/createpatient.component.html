@@ -1,0 +1,132 @@
+<div class="topnav" >
+  <a
+    class="active"
+    routerLink="/receptionistdashboard"
+    routerLinkActive="active"
+    >Home</a
+  >
+  <!-- <a routerLink="/createPatient" createPatient>Create Patient</a> -->
+  
+  <!-- <a routerLink="/existingpatientcomponent" routerLinkActive="active" >Patient List</a> -->
+  
+  <!-- <a routerLink="/Allappointment" routerLinkActive="active"
+    >Appointments</a
+  > -->
+  <!-- <a routerLink="/billComponent">Generate Bill</a> -->
+
+  <!-- <a routerLink="/Doctorslist" routerLinkActive="active"
+  >Doctors List</a
+> -->
+
+  <!-- <a class="log1" style="float:right" routerLink="/LoginComponent" routerLinkActive="active"
+    >My Details</a
+  > -->
+  <!-- <a class="log" routerLink="/LoginComponent" routerLinkActive="active"
+    >Logout</a
+  > -->
+</div>
+<section class="" style="background-color: #8fc4b7">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-1 col-xl-7">
+            <div class="card rounded-3">
+              <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" -->
+              <!-- class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                alt="Sample photo"> -->
+              <div class="card-body p-4 p-md-5">
+                <!-- mb-4 pb-2 pb-md-0 mb-md-5 px-md-2  -->
+                <h3 class="text-justify">
+                  Patient Details Registration
+                </h3>
+    
+                <form [formGroup]="addPatient" class="px-md-2" (submit)="onSubmit()"
+                autocomplete="off"
+                action=""
+                #f="ngForm"
+                novalidate
+                (ngSubmit)="f.form.valid && onSubmit()"
+                >
+                  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Patient Name</label
+                    >
+                    <input type="text" id="form3Example1q" class="form-control" (keypress)="OnlyNumbersAllowed($event)"  name="patientN" required="required" formControlName="patientName" [(ngModel)]="formdata.patientN"  required />
+                  </div>
+                  <div  *ngIf="addPatient.controls['patientName'].invalid && (addPatient.controls['patientName'].dirty || addPatient.controls['patientName'].touched)" class="alert">
+                    <div *ngIf="addPatient.controls['patientName'].errors" style="color: red;">
+                    *Please Enter Your Name  
+                  </div>
+                </div>
+                 
+                  
+                  <!-- <span class="text-danger">
+                      Name Required
+                  </span> -->
+                  
+    
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Patient Address</label
+                    >
+                    <input type="text" id="form3Example1q" class="form-control" required="required" formControlName="patientAddress" />
+                  </div>
+                  <div *ngIf="addPatient.controls['patientAddress'].invalid && (addPatient.controls['patientAddress'].dirty || addPatient.controls['patientAddress'].touched)" class="alert">
+                    <div *ngIf="addPatient.controls['patientAddress'].errors" style="color: red;">
+                    *Please Enter Your Address
+                  </div>
+                </div>
+    
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Patient Age</label
+                    >
+                    <input type="number" id="form3Example1q" (keypress)="OnlyNumbeAllowed($event)" class="form-control" required="required" formControlName="patientAge" />
+                  </div>
+                  <div *ngIf="addPatient.controls['patientAge'].invalid && (addPatient.controls['patientAge'].dirty || addPatient.controls['patientAge'].touched)" class="alert">
+                    <div *ngIf="addPatient.controls['patientAge'].errors" style="color: red;">
+                    *Please Enter Your Age
+                  </div>
+                </div>
+    
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Patient Phone No</label
+                    >
+                    <input
+                      type="tel"
+                      id="form3Example1q"
+                      pattern="^[6-9]{1}[0-9]{9}"
+                      class="form-control"
+                      formControlName="patientPhoneNo"
+                      required="required"
+                    />
+                  </div>
+                  <div *ngIf="addPatient.controls['patientPhoneNo'].invalid && (addPatient.controls['patientPhoneNo'].dirty || addPatient.controls['patientPhoneNo'].touched)" class="alert">
+                    <div *ngIf="addPatient.controls['patientPhoneNo'].errors" style="color: red;">
+                    *Please Enter Your 10 Digit Phone Number
+                  </div>
+                </div>
+    
+                  
+                  <div class="col-md-6 mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Patient Gender</label
+                    ><br />
+                    <select class="select" formControlName="patientGender" required="required" >
+                      <option value="0">MALE</option>
+                      <option value="1">FEMALE</option>
+                      <option value="2">OTHERS</option>
+                    </select>
+                  </div>
+    
+                  <button type="submit" class="btn btn-success btn-lg mb-1" required="required" [disabled]="addPatient.invalid" >
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

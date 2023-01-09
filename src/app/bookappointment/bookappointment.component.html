@@ -1,0 +1,170 @@
+<div class="topnav">
+  <a class="active" routerLink="/receptionistdashboard">Home</a>
+ 
+  <div class="search-container">
+    <form>
+      <!-- <input type="text" placeholder="Search.." name="">
+      <button type="submit" >Submit</button> -->
+      <!-- routerLink="/ReadPatient/{{}}" -->
+      <!-- patientName" [(ngModel)]="" -->
+    </form>
+  </div>
+</div>
+<section class="" style="background-color: #8fc4b7">
+  <!-- h-100 h-custom -->
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      
+      <div class="col-lg-1 col-xl-7">
+        <div class="card rounded-3">
+
+
+          
+          <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" -->
+          <!-- class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo"> -->
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Book Appointment</h3>
+
+            <!-- (submit)="onSubmit()" -->
+            <form class="px-md-2" [formGroup]="bookAppointmentForm" onsubmit="onSubmit()" autocomplete="off">
+              <!-- <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Patient Id</label
+                >
+                <input type="number" [disabled]="true" id="form3Example1q" class="form-control" formControlName="patientId" />
+              </div> -->
+
+              <!-- <div class="col-md-6 mb-4">
+                <label class="form-label" for="form3Example1q">Reason</label
+                ><br />
+                <select #select (change)=onClick(select.value) class="select" formControlName="reason" >
+                  <option value="" disabled>GENERAL : </option>
+                  <option value="FEVER">FEVER</option>
+                  <option value="STOMACH_PAIN">STOMACH_PAIN</option>
+                  <option value="HEAD_ACHE">HEAD_ACHE</option>
+                  <option value="FATIGUE">FATIGUE</option>
+                  <option value="COLD">COLD</option>
+                  <option value="COUGH">COUGH</option>
+                  <option value="BRUISES">BRUISES</option>
+                  <option value="JAUNDICE">JAUNDICE</option>
+                  <option value="TYPHOID">TYPHOID</option>
+                  <option value="MALARIA">MALARIA</option>
+                  <option value="DENGUE">DENGUE</option>
+                  <option value="ENT" disabled>ENT : </option>
+                  <option value="RUNNY_NOSE">RUNNY_NOSE</option>
+                  <option value="SORE_THROAT">SORE_THROAT</option>
+                  <option value="EAR_PAIN">EAR_PAIN</option>
+                  <option value="HEARING_LOSS">HEARING_LOSS</option>
+                  <option value="SNORING">SNORING</option>
+                  <option value="SINUS_PRESSURE">SINUS_PRESSURE</option>
+                  <option value="NOSE_BLEEDS">NOSE_BLEEDS</option>
+                  <option value="NASAL_CONGESTION">NASAL_CONGESTION</option>
+                  <option  value="OTHERS">OTHERS</option> 
+                </select>
+                <br/>
+                <br/>
+                
+                <div class="form-outline mb-4" *ngIf="others" >
+                  <label class="form-label" for="form3Example1q"
+                    >Other Reasons</label
+                  >
+                  <input type="text" id="form3Example1q"  class="form-control" name="patientN" required="required" formControlName="reason"   required  />
+                </div> -->
+
+              <!-- </div> -->
+
+
+
+              <!-- <div *ngIf="bookAppointmentForm.controls['reason'].invalid && (bookAppointmentForm.controls['reason'].dirty || bookAppointmentForm.controls['reason'].touched)" class="alert">
+                <div *ngIf="bookAppointmentForm.controls['reason'].errors" style="color: red;">
+                *Please Enter The Reason
+              </div>
+            </div> -->
+
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example1q"
+                >Reason</label
+              >
+              <input type="text"  id="form3Example1q"  (keypress)="OnlyNumbersAllowed($event)" class="form-control" formControlName="reason" />
+            </div>
+            <div *ngIf="bookAppointmentForm.controls['reason'].invalid && (bookAppointmentForm.controls['reason'].dirty || bookAppointmentForm.controls['reason'].touched)" class="alert">
+              <div *ngIf="bookAppointmentForm.controls['reason'].errors" style="color: red;">
+              *Please Enter Your Reason
+            </div>
+          </div>
+
+            <div class="col-md-6 mb-4">
+              <label class="form-label" for="form3Example1q"
+                >Speciality</label
+              ><br />
+              <select class="select" required  formControlName="doctorspeciality" >
+                <!-- <option value="null">---</option> -->
+                <!-- <option value="GENERAL">GENERAL</option> -->
+                <option *ngFor="let spec of speci | keyvalue " [ngValue]="spec.value">{{spec.value}}</option>
+                <!-- <option value="ENT">ENT</option>
+                <option value="GYNECOLOGY">GYNECOLOGY</option>
+                <option value="PEDIATRICS">PEDIATRICS</option>
+                <option value="ORTHOPEDICS">ORTHOPEDICS</option>
+                <option value="CARDIOLOGY">CARDIOLOGY</option> -->
+                
+              </select>
+            </div>
+            <div  *ngIf="bookAppointmentForm.controls['doctorspeciality'].invalid && (bookAppointmentForm.controls['doctorspeciality'].dirty || bookAppointmentForm.controls['doctorspeciality'].touched)" class="alert">
+              <div *ngIf="bookAppointmentForm.controls['doctorspeciality'].errors" style="color: red;">
+              *Please Enter Your Specality
+            </div>
+          </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Appointment Time</label
+                >
+                <input type="time" id="form3Example1q" class="form-control"  formControlName="appoinmentTime" />
+              </div>
+              <div *ngIf="bookAppointmentForm.controls['appoinmentTime'].invalid && (bookAppointmentForm.controls['appoinmentTime'].dirty || bookAppointmentForm.controls['appoinmentTime'].touched)" class="alert">
+                <div *ngIf="bookAppointmentForm.controls['appoinmentTime'].errors" style="color: red;">
+                *Please Select The Appointment Time
+              </div>
+            </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Appointment Date</label
+                >
+                <input type="date" id="form3Example1q" class="form-control"  formControlName="appointmentDate" />
+              </div>
+              <div *ngIf="bookAppointmentForm.controls['appointmentDate'].invalid && (bookAppointmentForm.controls['appointmentDate'].dirty || bookAppointmentForm.controls['appointmentDate'].touched)" class="alert">
+                <div *ngIf="bookAppointmentForm.controls['appointmentDate'].errors" style="color: red;">
+                *Please Select The Appointment Date
+              </div>
+            </div>
+
+              <!-- <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Receptionist No</label
+                >
+                <input type="number" id="form3Example1q" class="form-control" />
+              </div> -->
+
+              <button
+                type="button"
+                class="btn btn-success btn-lg mb-1"
+                required="required"
+                
+                (click)="onSubmit()"
+              >
+                Submit
+              </button>
+              <!-- [disabled]="bookAppointmentForm.invalid" -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+</section>

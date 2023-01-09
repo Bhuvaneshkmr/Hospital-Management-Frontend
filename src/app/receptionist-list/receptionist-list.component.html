@@ -1,0 +1,58 @@
+<html>
+  <body>
+
+    <div class="topnav">
+        <a
+          class="active"
+          routerLink="/AdmindashboardComponent"
+          routerLinkActive="active"
+          >Home</a
+        >
+      
+      </div>
+    <div class="row">
+      <h2>RECEPTIONIST LIST</h2>
+    </div>
+
+    <div *ngIf="receptionists==null">
+      <h1>NO RECEPTIONIST FOUND</h1>
+  </div>
+  <div *ngIf="receptionists!=null">
+
+  
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Receptionist User Name</th>
+          <th>Receptionist Phone Number</th>
+          <th>Receptionist Gender</th>
+          <th>Joining Date</th>
+          <!-- <th>PatientAge</th> -->
+          <!-- <th>PatientGender</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let receptionist of receptionists">
+        <td>{{ receptionist.receptionistUserName }}</td>
+          <td>{{ receptionist.receptionistPhoneNo }}</td>
+          <td>{{ receptionist.receptionistGender }}</td>
+          <td>{{ receptionist.joiningDate }}</td>
+          <!-- <td>{{ patient.patientAge }}</td> -->
+          <!-- <td>{{ patient.patientGender }}</td> -->
+          <!-- <td> -->
+            <!-- (click) = "updateBook(book.bookId)" -->
+                        <!-- <button  class = "btn btn-primary"> Update</button>  -->
+                         <!-- (click) = "deleteBook(book.bookId)"  -->
+                        <!-- <button  class = "btn btn-danger" style="margin-left: 10px"> Delete</button> -->
+                         <!-- (click) = "bookDetail(book.bookId)"  -->
+                        <!-- <button  class = "btn btn-primary" style="margin-left: 10px" (click)="patientList(receptionist.receptionistId)"  >Patient Lists</button> -->
+                        <!-- routerLink="/bookappointmentcomponent" -->
+          <!-- </td> -->
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  </body>
+</html>

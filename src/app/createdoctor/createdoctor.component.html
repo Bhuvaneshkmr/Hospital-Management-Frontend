@@ -1,0 +1,207 @@
+<div class="topnav">
+  <a
+    class="active"
+    routerLink="/AdmindashboardComponent"
+    routerLinkActive="active"
+    >Home</a
+  >
+
+</div>
+
+<section class="" style="background-color: #8fc4b7">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-1 col-xl-7">
+          <div class="card rounded-3">
+            <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" -->
+            <!-- class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo"> -->
+            <div class="card-body p-4 p-md-5">
+              <!-- class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2" -->
+              <h3 class="text-justify">
+                Doctor Details Registration
+              </h3>
+  
+              <form class="px-md-2" [formGroup]="addDoctor" (submit)="onSubmit()" autocomplete="off">
+  
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Doctor Name</label
+                  >
+                  <input type="text" id="form3Example1q" class="form-control" (keypress)="OnlyNumbersAllowed($event)" formControlName="doctorName" />
+                </div>
+                <div *ngIf="addDoctor.controls['doctorName'].invalid && (addDoctor.controls['doctorName'].dirty || addDoctor.controls['doctorName'].touched)" class="alert">
+                  <div *ngIf="addDoctor.controls['doctorName'].errors" style="color: red;">
+                  *Please Enter Your Name
+                </div>
+              </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Doctor Password</label
+                  >
+                  <input type="text" id="form3Example1q" class="form-control" formControlName="doctorPassword" />
+                </div>
+                <div *ngIf="addDoctor.controls['doctorPassword'].invalid && (addDoctor.controls['doctorPassword'].dirty || addDoctor.controls['doctorPassword'].touched)" class="alert">
+                  <div *ngIf="addDoctor.controls['doctorPassword'].errors" style="color: red;">
+                  *Please Enter Your Password
+                </div>
+              </div>
+  
+              <div class="col-md-6 mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Doctor Speciality </label
+                ><br />
+                <select class="select" required  #select (change)=onClick(select.value) formControlName="speciality" >
+                  <!-- <option value="GENERAL">GENERAL</option> -->
+                  <option *ngFor="let spec of speci | keyvalue " [ngValue]="spec.value">{{spec.value}}</option>
+                  <!-- <option value="ENT">ENT</option>
+                  <option value="GYNECOLOGY">GYNECOLOGY</option>
+                  <option value="PEDIATRICS">PEDIATRICS</option>
+                  <option value="ORTHOPEDICS">ORTHOPEDICS</option>
+                  <option value="CARDIOLOGY">CARDIOLOGY</option> -->
+                  <option value="OTHERS">OTHERS</option> 
+                </select>
+                <br>
+                <br>
+                <div class="form-outline mb-4" *ngIf="others" >
+                  <label class="form-label" for="form3Example1q"
+                    >Add Speciality</label
+                  >
+                  <input type="text" id="form3Example1q"  class="form-control" name="patientN" required="required" formControlName="speciality"   required  />
+                </div> 
+              </div>
+                <div *ngIf="addDoctor.controls['speciality'].invalid && (addDoctor.controls['speciality'].dirty || addDoctor.controls['speciality'].touched)" class="alert">
+                  <div *ngIf="addDoctor.controls['speciality'].errors" style="color: red;">
+                  *Please Select Your Speciality
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Doctor Qualification </label
+                ><br />
+                <select class="select" required  formControlName="doctorQualification" >
+                  <option value="MBBS">MBBS</option>
+                  <!-- <option value="MBBS_MS">MBBS,MS</option> -->
+                  <option value="MBBS_MD">MBBS,MD</option>
+                  <option value="BDS">BDS</option>
+                  <option value="MDS">MDS</option>
+                  
+                </select>
+
+                
+              </div>
+                  <div *ngIf="addDoctor.controls['doctorQualification'].invalid && (addDoctor.controls['doctorQualification'].dirty || addDoctor.controls['doctorQualification'].touched)" class="alert">
+                    <div *ngIf="addDoctor.controls['doctorQualification'].errors" style="color: red;">
+                    *Please Enter Your Qualification
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Doctor Phone No</label
+                  >
+                  <input
+                    type="tel"
+                    id="form3Example1q"
+                    pattern="^[6-9]{1}[0-9]{9}"
+                    class="form-control"
+                    formControlName="doctorPhoneNumber"
+                    required="required"
+                  />
+                </div>
+                <div *ngIf="addDoctor.controls['doctorPhoneNumber'].invalid && (addDoctor.controls['doctorPhoneNumber'].dirty || addDoctor.controls['doctorPhoneNumber'].touched)" class="alert">
+                  <div *ngIf="addDoctor.controls['doctorPhoneNumber'].errors" style="color: red;">
+                  *Please Enter Your 10 Digit Phone Number
+                </div>
+              </div>
+
+                
+
+                <!-- <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Doctor Salary</label
+                    >
+                    <input type="number" id="form3Example1q" class="form-control" formControlName="doctorSalary" />
+                  </div>
+                  <div *ngIf="addDoctor.controls['doctorSalary'].invalid && (addDoctor.controls['doctorSalary'].dirty || addDoctor.controls['doctorSalary'].touched)" class="alert">
+                    <div *ngIf="addDoctor.controls['doctorSalary'].errors" style="color: red;">
+                    *Please Enter Your Salary
+                  </div>
+                </div> -->
+  
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Doctor Age</label
+                  >
+                  <input type="number" id="form3Example1q" class="form-control"  formControlName="doctorAge"/>
+                </div>
+                <div *ngIf="addDoctor.controls['doctorAge'].invalid && (addDoctor.controls['doctorAge'].dirty || addDoctor.controls['doctorAge'].touched)" class="alert">
+                  <div *ngIf="addDoctor.controls['doctorAge'].errors" style="color: red;">
+                  *Please Enter Your Age
+                </div>
+              </div>
+                
+
+                <div class="col-md-6 mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Doctor Gender</label
+                  ><br />
+                  <select class="select" required  formControlName="doctorGender" >
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                    <option value="OTHERS">OTHERS</option>
+                  </select>
+                </div>
+                <div *ngIf="addDoctor.controls['doctorGender'].invalid && (addDoctor.controls['doctorGender'].dirty || addDoctor.controls['doctorGender'].touched)" class="alert">
+                  <div *ngIf="addDoctor.controls['doctorGender'].errors" style="color: red;">
+                  *Please Select Your Gender
+                </div>
+              </div>
+
+              
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Year Of Practice</label
+                    >
+                    <input type="number" id="form3Example1q" class="form-control"  formControlName="yearOfPractice" />
+                  </div>
+                  <div *ngIf="addDoctor.controls['yearOfPractice'].invalid && (addDoctor.controls['yearOfPractice'].dirty || addDoctor.controls['yearOfPractice'].touched)" class="alert">
+                    <div *ngIf="addDoctor.controls['yearOfPractice'].errors" style="color: red;">
+                    *Please Enter Your Year Of Practice
+                  </div>
+                </div>
+
+                  
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Joining Date</label
+                >
+                <input type="date" id="form3Example1q" class="form-control"  formControlName="joiningDate" />
+              </div>
+              <div *ngIf="addDoctor.controls['joiningDate'].invalid && (addDoctor.controls['joiningDate'].dirty || addDoctor.controls['joiningDate'].touched)" class="alert">
+                <div *ngIf="addDoctor.controls['joiningDate'].errors" style="color: red;">
+                *Please Enter The Joining Date
+              </div>
+            </div>
+                  
+
+                  <!-- <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Hospital Id</label
+                    >
+                    <input type="number" id="form3Example1q" class="form-control" />
+                  </div> -->
+  
+                <button type="submit" [disabled]="addDoctor.invalid" class="btn btn-success btn-lg mb-1" required="required">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,105 @@
+<div class="topnav">
+  <a
+    class="active"
+    routerLink="/AdmindashboardComponent"
+    routerLinkActive="active"
+    >Home</a
+  >
+
+</div>
+
+
+<section class="" style="background-color: #8fc4b7">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-1 col-xl-7">
+          <div class="card rounded-3">
+            <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" -->
+            <!-- class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo"> -->
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
+                Receptionist Details Registration
+              </h3>
+  
+              <form class="px-md-2" [formGroup]="addReceptionist"  (submit)="onSubmit()" autocomplete="off">
+               
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Receptionist UserName</label
+                  >
+                  <input type="text" id="form3Example1q" class="form-control" formControlName="receptionistUserName" />
+                </div>
+                <div *ngIf="addReceptionist.controls['receptionistUserName'].invalid && (addReceptionist.controls['receptionistUserName'].dirty || addReceptionist.controls['receptionistUserName'].touched)" class="alert">
+                  <div *ngIf="addReceptionist.controls['receptionistUserName'].errors" style="color: red;">
+                  *Please Enter Your User Name
+                </div>
+              </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Receptionist Password</label
+                    >
+                    <input type="text" id="form3Example1q" class="form-control" formControlName="receptionistPassword" />
+                  </div>
+                  <div *ngIf="addReceptionist.controls['receptionistPassword'].invalid && (addReceptionist.controls['receptionistPassword'].dirty || addReceptionist.controls['receptionistPassword'].touched)" class="alert">
+                    <div *ngIf="addReceptionist.controls['receptionistPassword'].errors" style="color: red;">
+                    *Please Enter Your Password
+                  </div>
+                </div>
+
+                  
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q"
+                  >Receptionist Phone No</label
+                >
+                <input
+                  type="tel"
+                  id="form3Example1q"
+                  pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                  class="form-control"
+                  formControlName="receptionistPhoneNo"
+                />
+              </div>
+              <div *ngIf="addReceptionist.controls['receptionistPhoneNo'].invalid && (addReceptionist.controls['receptionistPhoneNo'].dirty || addReceptionist.controls['receptionistPhoneNo'].touched)" class="alert">
+                <div *ngIf="addReceptionist.controls['receptionistPhoneNo'].errors" style="color: red;">
+                *Please Enter Your 10 Digit Phone Number
+              </div>
+            </div>
+              
+                  <div class="col-md-6 mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Receptionist Gender</label
+                    ><br />
+                    <select class="select" required formControlName="receptionistGender" >
+                      <option value="0">MALE</option>
+                      <option value="1">FEMALE</option>
+                      <option value="2">OTHERS</option>
+                    </select>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Joining Date</label
+                    >
+                    <input type="date" id="form3Example1q" class="form-control"  formControlName="joiningDate" />
+                  </div>
+                  <div *ngIf="addReceptionist.controls['joiningDate'].invalid && (addReceptionist.controls['joiningDate'].dirty || addReceptionist.controls['joiningDate'].touched)" class="alert">
+                    <div *ngIf="addReceptionist.controls['joiningDate'].errors" style="color: red;">
+                    *Please Enter The Joining Date
+                  </div>
+                </div>
+  
+                
+  
+                <button type="submit" [disabled]="addReceptionist.invalid" class="btn btn-success btn-lg mb-1" required="required">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

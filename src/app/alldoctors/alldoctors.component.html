@@ -1,0 +1,53 @@
+<html>
+  <body>
+ 
+    
+    <div class="row">
+      <h2>DOCTOR LIST</h2>
+    </div>
+
+    <div *ngIf="doctors == null">
+      <h1>NO DOCTOR FOUND</h1>
+    </div>
+
+    <div *ngIf="doctors != null">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>DoctorId</th>
+            <th>DoctorName</th>
+            <th>DoctorAge</th>
+            <!-- <th>DoctorQualification</th> -->
+            <th>Speciality</th>
+            <!-- <th>Availability</th> -->
+            
+            <!-- <th>YearOfPractice</th> -->
+            <!-- <th>DoctorSalary</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doctor of doctors">
+            <td>{{ doctor.doctorId }}</td>
+            <td>{{ doctor.doctorName }}</td>
+            <td>{{ doctor.doctorAge }}</td>
+            <!-- <td>{{ doctor.doctorQualification }}</td> -->
+            <td>{{ doctor.speciality }}</td>
+            <!-- <td>{{ doctor.availability }}</td> -->
+            <!-- <td>{{ doctor.yearOfPractice }}</td> -->
+            <!-- <td>{{ doctor.doctorSalary }}</td> -->
+            <!-- <td> -->
+              <!-- (click) = "updateBook(book.bookId)" -->
+              <!-- <button class="btn btn-primary">Update</button> -->
+              <!-- (click) = "deleteBook(book.bookId)" -->
+              <!-- <button class="btn btn-danger" style="margin-left: 10px"> -->
+                <!-- Delete -->
+              <!-- </button> -->
+              <!-- (click) = "bookDetail(book.bookId)" -->
+              <!-- <button  class = "btn btn-primary" style="margin-left: 10px"> View</button> -->
+            <!-- </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

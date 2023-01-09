@@ -1,0 +1,85 @@
+<div class="topnav">
+  <a class="active" routerLink="/Allappointment">Back</a>
+ 
+  <div class="search-container">
+    <form>
+      <!-- <input type="text" placeholder="Search.."  name="search" > -->
+      <!-- <button type="submit" routerLink="/ReadPatient/{{patientName}}" >Submit</button> -->
+      <!-- routerLink="/ReadPatient/{{}}" -->
+      <!-- patientName" [(ngModel)]="" -->
+    </form>
+  </div>
+</div>
+
+<section class="" style="background-color: #8fc4b7">
+    <!-- h-100 h-custom -->
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-1 col-xl-7">
+          <div class="card rounded-3">
+            <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp" -->
+            <!-- class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo"> -->
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Update Appointment</h3>
+              <!--  -->
+              <form class="px-md-2"  [formGroup]="bookForm" (submit)="onSubmit()" >
+                <!-- [formGroup]="addBookAppointment" -->
+                <!-- (click) = "deleteProduct(product.productId)" -->
+                
+                  <!-- <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q"
+                      >Appointment No</label
+                    >
+                    <input type="number" id="form3Example1q" class="form-control"   formControlName="appointmentNo" />
+                  </div> -->
+  
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Appointment Time</label
+                  >
+                  <input type="time" id="form3Example1q" class="form-control" value="{{bookAppointment.appoinmentTime}}"  formControlName="appointmentTime"
+                       />
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Appointment Date</label
+                  >
+                  <input type="date" id="form3Example1q" class="form-control" value="{{bookAppointment.appointmentDate}}"  formControlName="appointmentDate"  
+                     />
+                </div>
+  
+                <!-- <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1q"
+                    >Receptionist No</label
+                  >
+                  <input type="number" id="form3Example1q" class="form-control" />
+                </div> -->
+
+                <div class="col-md-6 mb-4">
+                  <label class="form-label" for="form3Example1q" >Appointment Status</label
+                  ><br />
+                  <select class="select" formControlName="appointmentStatus"  value="{{bookAppointment.appointmentStatus}}" >
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="CANCEL">CANCEL</option>
+                    <option value="COMPLETED">COMPLETED</option>
+                  </select>
+                </div>
+  
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg mb-1"
+                  required="required"
+
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
