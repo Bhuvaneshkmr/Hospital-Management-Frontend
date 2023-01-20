@@ -34,6 +34,10 @@ import { DoctorPatientListComponent } from './doctor-patient-list/doctor-patient
 import { ActiveAppointmentsByDoctorComponent } from './active-appointments-by-doctor/active-appointments-by-doctor.component';
 import { SignupadminComponent } from './signupadmin/signupadmin.component';
 import { AdminprofileComponent } from './adminprofile/adminprofile.component';
+import { Receptionist } from './Receptionist';
+import { ReceptionistguardGuard } from './gaurd/receptionistguard.guard';
+import { AdminguardGuard } from './gaurd/adminguard.guard';
+import { DoctorguardGuard } from './gaurd/doctorguard.guard';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
@@ -45,47 +49,82 @@ const routes: Routes = [
   //{ path: '', redirectTo: 'LoginComponent',pathMatch: 'full'},
 
   {path: '',component: LoginComponent},
-  {path: 'LoginComponent',component: LoginComponent},
+
+  // Admin Componenet
   {path: 'AdminloginComponent',component: AdminloginComponent},
+  {path: 'AdmindashboardComponent',component: AdmindashboardComponent,canActivate:[AdminguardGuard]},
+  {path: 'CreatedoctorComponent',component:CreatedoctorComponent,canActivate:[AdminguardGuard]},
+  {path: 'CreatereceptionistComponent',component:CreatereceptionistComponent,canActivate:[AdminguardGuard]},
+  {path: 'Admindoctorslist',component:AdmindoctorslistComponent,canActivate:[AdminguardGuard]},
+  {path: 'Adminprofile',component:AdminprofileComponent,canActivate:[AdminguardGuard]},
+  {path: 'Signupadmin',component:SignupadminComponent,canActivate:[AdminguardGuard]},
+  {path: 'Billlistforadmin',component: BilllistforadminComponent,canActivate:[AdminguardGuard]},
+  {path: 'DoctorAppointments/:doctorId',component:DoctorAppointmentsComponent,canActivate:[AdminguardGuard]},
+  // receptionist Componenet
+  {path: 'LoginComponent',component: LoginComponent},
+  {path: 'receptionistdashboard',component: ReceptionistdashboardComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'createPatient',component:CreatepatientComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'readAllPatient',component:AllpatientComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'Alldoctors',component:AlldoctorsComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'Billlist',component: BilllistComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'Doctorslist',component:DoctorslistComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'Allappointment',component:AllappointmentComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'ListOfPatientByReceptionist',component:ListOfPatientByReceptionistComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'ReceptionistList',component: ReceptionistListComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'Doctorspecialitylist',component:DoctorspecialitylistComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'bookappointmentcomponent',component:BookappointmentComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'bookappointmentcomponent/:PatientId',component:BookappointmentComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'ListOfPatientByReceptionist/:receptionistId',component:ListOfPatientByReceptionistComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'billComponent/:appointmentNo',component:BillComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'existingpatientcomponent',component:ExistingpatientComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'billComponent',component:BillComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'Mydetails',component:MydetailsComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'AppointmentsForToday',component:AppointmentsForTodayComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'ActiveAppointments',component:ActiveAppointmentsComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'ReadByPatientName',component:ReadByPatientNameComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'UpdateAppointmentDateAndTime/:appointmentNo',component:UpdateAppointmentDateAndTimeComponent,canActivate:[ReceptionistguardGuard]},
+  {path: 'ReadPatient/:patientName',component:ReadByPatientNameComponent,canActivate:[ReceptionistguardGuard]},
   // {path: 'receptionistdashboard',component: ReceptionistdashboardComponent},
-  {path: 'receptionistdashboard',component: ReceptionistdashboardComponent},
-  {path: 'AdmindashboardComponent',component: AdmindashboardComponent},
-  {path: 'createPatient',component:CreatepatientComponent},
-  {path: 'DoctorPatientList',component: DoctorPatientListComponent},
-  {path: 'Doctorprofile',component:DoctorprofileComponent},
-  {path: 'Billlistforadmin',component: BilllistforadminComponent},
-  {path: 'CreatedoctorComponent',component:CreatedoctorComponent},
-  {path: 'CreatereceptionistComponent',component:CreatereceptionistComponent},
-  {path: 'readAllPatient',component:AllpatientComponent},
-  {path: 'Alldoctors',component:AlldoctorsComponent},
-  {path: 'Admindoctorslist',component:AdmindoctorslistComponent},
-  {path: 'Adminprofile',component:AdminprofileComponent},
-  {path: 'Doctorslist',component:DoctorslistComponent},
-  {path: 'Billlist',component: BilllistComponent},
-  {path: 'Allappointment',component:AllappointmentComponent},
-  {path: 'ListOfPatientByReceptionist',component:ListOfPatientByReceptionistComponent},
-  {path: 'ActiveAppointmentsByDoctor',component:ActiveAppointmentsByDoctorComponent},
-  {path: 'ReceptionistList',component: ReceptionistListComponent},
-  {path: 'UpdateAppointmentStatusByDoctor',component:UpdateAppointmentStatusByDoctorComponent},
-  {path: 'bookappointmentcomponent',component:BookappointmentComponent},
-  {path: 'Signupadmin',component:SignupadminComponent},
-  {path: 'Doctorspecialitylist',component:DoctorspecialitylistComponent},
-  {path: 'bookappointmentcomponent/:PatientId',component:BookappointmentComponent},
-  {path: 'ListOfPatientByReceptionist/:receptionistId',component:ListOfPatientByReceptionistComponent},
-  {path: 'billComponent/:appointmentNo',component:BillComponent},
-  {path: 'existingpatientcomponent',component:ExistingpatientComponent},
-  {path: 'billComponent',component:BillComponent},
-  {path: 'Doctordashboard',component:DoctordashboardComponent},
-  {path: 'Mydetails',component:MydetailsComponent},
+  
+  // Doctor Componenet
+  
+  {path: 'DoctorPatientList',component: DoctorPatientListComponent,canActivate:[DoctorguardGuard]},
+  {path: 'Doctorprofile',component:DoctorprofileComponent,canActivate:[DoctorguardGuard]},
+  {path: 'ActiveAppointmentsByDoctor',component:ActiveAppointmentsByDoctorComponent,canActivate:[DoctorguardGuard]},
+  {path: 'UpdateAppointmentStatusByDoctor',component:UpdateAppointmentStatusByDoctorComponent,canActivate:[DoctorguardGuard]},
+  {path: 'Doctordashboard',component:DoctordashboardComponent,canActivate:[DoctorguardGuard]},
   {path: 'Doctorlogin',component:DoctorloginComponent},
-  {path: 'DoctorAppointments',component:DoctorAppointmentsComponent},
-  {path: 'AppointmentsForToday',component:AppointmentsForTodayComponent},
-  {path: 'ActiveAppointments',component:ActiveAppointmentsComponent},
-  {path: 'ReadByPatientName',component:ReadByPatientNameComponent},
-  {path: 'UpdateAppointmentDateAndTime/:appointmentNo',component:UpdateAppointmentDateAndTimeComponent},
-  {path: 'UpdateAppointmentStatusByDoctor/:appointmentNo',component:UpdateAppointmentStatusByDoctorComponent},
-  {path: 'ReadPatient/:patientName',component:ReadByPatientNameComponent},
-  {path: 'DoctorAppointments/:doctorId',component:DoctorAppointmentsComponent},
+  {path: 'DoctorAppointments',component:DoctorAppointmentsComponent,canActivate:[DoctorguardGuard]},
+  {path: 'UpdateAppointmentStatusByDoctor/:appointmentNo',component:UpdateAppointmentStatusByDoctorComponent,canActivate:[DoctorguardGuard]},
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   
   

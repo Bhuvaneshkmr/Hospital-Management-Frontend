@@ -85,6 +85,7 @@ export class ReceptionistdashboardComponent {
     this.cookie.delete('receptionistId');
     this.cookie.delete('receptionistUserName');
     this.router.navigate(['LoginComponent']);
+    
 
   }
 

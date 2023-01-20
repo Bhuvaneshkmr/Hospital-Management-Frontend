@@ -9,6 +9,7 @@ import { BookAppointment, Reason } from '../BookAppointment';
 import { Bill } from '../Bill';
 import { Time } from '@angular/common';
 import { Receptionist } from '../Receptionist';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ import { Receptionist } from '../Receptionist';
 export class ReceptionistserviceService {
   private baseURL = 'http://localhost:8080/receptionist/';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient , private cookie:CookieService) {}
 
   readAllPatient(): Observable<Patient[]> {
     return this.httpClient.get<Patient[]>(`${this.baseURL}` + 'ReadAllPatient');
@@ -295,4 +296,9 @@ export class ReceptionistserviceService {
     );
 
   }
+
+
+  isloggedIn(){
+    return !!this.cookie.get('receptionistId');
+   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BookAppointment } from '../BookAppointment';
 import { Doctor } from '../Doctor';
@@ -12,7 +13,7 @@ export class DoctorserviceService {
 
   private baseURL = 'http://localhost:8080/doctor/';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private cookie:CookieService) {}
 
   doctorLogin(doctorName: String): Observable<Doctor> {
     return this.httpClient.get<Doctor>(
@@ -88,5 +89,9 @@ export class DoctorserviceService {
     );
   }
 
+
+  isloggedIn(){
+    return !!this.cookie.get('doctorId');
+   }
 
 }

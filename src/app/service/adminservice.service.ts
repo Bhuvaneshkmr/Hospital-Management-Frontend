@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Admin } from '../Admin';
 import { Bill } from '../Bill';
@@ -13,7 +14,7 @@ import { Receptionist } from '../Receptionist';
 export class AdminserviceService {
   private baseURL = 'http://localhost:8080/Hospital/';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private cookie:CookieService) {}
 
   createReceptionist(
     receptionist: Receptionist,
@@ -133,4 +134,9 @@ export class AdminserviceService {
       `${this.baseURL}` + 'mobileNoExistforDoctor/' + `${doctorPhoneNo}`
     );
   }
+
+
+  isloggedIn(){
+    return !!this.cookie.get('adminId');
+   }
 }
